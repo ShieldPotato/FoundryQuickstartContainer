@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  foundryvtt:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    container_name: "FoundryVTT_Instance_1"
+    image: ubuntu:latest
+    restart: unless-stopped
+    env_file:
+      - ".env"
+    ports:
+      - "30000:30000"
+    volumes:
+      - "/root/Foundry/Data:$FOUNDRY_DATA"
+
